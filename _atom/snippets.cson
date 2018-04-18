@@ -1,0 +1,80 @@
+'.source.cpp':
+  'bellman_ford':
+    'prefix': 'bellman_ford'
+    'body':
+      '''
+        const int MAX_E = ${1:100000};
+        const int MAX_V = ${2:100000};
+
+        struct edge{int from, to; ll cost;};
+        edge es[MAX_E];
+
+        ll d[MAX_V];
+        int V, E;
+
+        bool bellman_ford(int s){
+          REP(i,V)d[i] = INFll;
+          d[s] = 0;
+          REP(i,V){
+            bool update = false;
+            REP(j,E){
+              edge e = es[j];
+              if(d[e.from] != INFll && d[e.to] > d[e.from] + e.cost){
+                d[e.to] = d[e.from] + e.cost;
+                update = true;
+                if(i == V-1){
+                  return false;
+                }
+              }
+            }
+            if(!update) break;
+          }
+          return true;
+        }
+
+      '''
+
+  'dijkstra':
+    'prefix': 'dijkstra'
+    'body':
+      '''
+        const int MAX_E = ${1:100000};
+        const int MAX_V = ${2:100000};
+
+        struct edge{int from, to; ll cost;};
+        edge es[MAX_E];
+
+        ll d[MAX_V];
+        int V, E;
+
+        bool bellman_ford(int s){
+          REP(i,V)d[i] = INFll;
+          d[s] = 0;
+          REP(i,V){
+            bool update = false;
+            REP(j,E){
+              edge e = es[j];
+              if(d[e.from] != INFll && d[e.to] > d[e.from] + e.cost){
+                d[e.to] = d[e.from] + e.cost;
+                update = true;
+                if(i == V-1){
+                  return false;
+                }
+              }
+            }
+            if(!update) break;
+          }
+          return true;
+        }
+
+      '''
+      
+ 'gcd':
+   'prefix': 'gcd'
+   'body':
+      '''
+      ll gcd(ll x, ll y){
+        if(x == 0)return y;
+        return gcd(y%x, x);
+      }
+      '''
