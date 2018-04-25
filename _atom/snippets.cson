@@ -34,35 +34,37 @@
   'dijkstra':
     'prefix':'dijkstra'
     'body':'''
-        const int MAX_E = ${1:100000};
-        const int MAX_V = ${2:100000};
+        // set V in main
+        // d[MAX_V] shows the answer
+        
+        const int MAX_V = ${1:100000};
 
-        struct edge{int from, to; ll cost;};
-        edge es[MAX_E];
+        struct edge{int to; ll cost;};
+        typedef pair<ll, int> P;
 
+        int V;
+        vector<edge> G[MAX_V];
         ll d[MAX_V];
-        int V, E;
 
-        bool bellman_ford(int s){
-          REP(i,V)d[i] = INFll;
+        void dijkstra(int s){
+          priority_queue<P, vector<P>, greater<P>  > que;
+          fill(d, d + V, INFll);
           d[s] = 0;
-          REP(i,V){
-            bool update = false;
-            REP(j,E){
-              edge e = es[j];
-              if(d[e.from] != INFll && d[e.to] > d[e.from] + e.cost){
-                d[e.to] = d[e.from] + e.cost;
-                update = true;
-                if(i == V-1){
-                  return false;
-                }
+          que.push(P(0,s));
+
+          while(!que.empty()){
+            P p = que.top(); que.pop();
+            int v = p.second;
+            if(d[v] < p.first) continue;
+            for(int i = 0; i < G[v].size(); i++){
+              edge e = G[v][i];
+              if(d[e.to] > d[v] + e.cost){
+                d[e.to] = d[v] + e.cost;
+                que.push(P(d[e.to], e.to));
               }
             }
-            if(!update) break;
           }
-          return true;
         }
-
       '''
   'gcd':
     'prefix':'gcd'
@@ -77,7 +79,7 @@
     'body':'''
       // mod_comb(n, k, p) → nCk p:MOD // O(p) + O(n log p)
 
-      const ll MAX_P = 1000000007;
+      const ll MAX_P = ${1:100000};
       ll fact[MAX_P];
 
       void fact_init(ll p){
@@ -123,7 +125,7 @@
     'prefix':'nck'
     'body':'''
       // pascal's triangle // C[n][k] -> nCk //　O(n^2)
-      const int MAX_N = 10000;
+      const int MAX_N = ${1:10000};
       ll C[MAX_N][MAX_N];
       void comb_table(int n){
         REP(i,n+1){
