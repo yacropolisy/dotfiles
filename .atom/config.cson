@@ -1,0 +1,34 @@
+"*":
+  core:
+    disabledPackages: [
+      "linter-gcc"
+      "markdown-preview"
+    ]
+    telemetryConsent: "no"
+  editor:
+    fontSize: 12
+  "exception-reporting":
+    userId: "c54533d7-ee0d-424e-a5f2-0dbc709369c9"
+  latex:
+    buildOnSave: true
+    engine: "platex"
+    openResultAfterBuild: false
+    opener: "pdf-view"
+    texPath: "/Library/TeX/texbin/tex"
+  "linter-clang": {}
+  "linter-cppcheck": {}
+  "linter-gcc":
+    gccIncludePaths: "/usr/local/Cellar/gcc/*"
+  "linter-ui-default":
+    panelHeight: 300
+  "spell-check":
+    grammars: [
+      "source.asciidoc"
+      "source.gfm"
+      "text.git-commit"
+      "text.plain"
+      "text.plain.null-grammar"
+      "text.tex.latex"
+    ]
+  welcome:
+    showOnStartup: false
