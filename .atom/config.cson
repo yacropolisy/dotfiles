@@ -3,6 +3,7 @@
     disabledPackages: [
       "linter-gcc"
       "markdown-preview"
+      "markdown-scroll-sync"
     ]
     telemetryConsent: "no"
   editor:
