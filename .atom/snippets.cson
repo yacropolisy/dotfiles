@@ -74,52 +74,44 @@
         return gcd(y%x, x);
       }
       '''
-  'mod_comb':
-    'prefix':'mod_comb'
+  'mod_nck':
+    'prefix':'mod_nck'
     'body':'''
-      // mod_comb(n, k, p) → nCk p:MOD // O(p) + O(n log p)
+    // mod_nck(n, k) → nCk // O(n)
+    // 1. mod_fact(n); mod_inv_fact(n);
+    // 2. ll ans = mod_nck(n,k);
 
-      const ll MAX_P = ${1:100000};
-      ll fact[MAX_P];
+    const ll MAX_N = ${1:200000};
+    ll fact[MAX_N+1], inv_fact[MAX_N+1];
 
-      void fact_init(ll p){
-        fact[0] = 1;
-        REP(i,p-1)fact[i+1] = fact[i] + (i+1) % p;
-      }
-
-      ll extgcd(ll a, ll b, ll& x, ll& y){
-        ll d = a;
-        if(b!=0){
-          d = extgcd(b, a%b, y, x);
-          y -= (a / b) * x;
-        }else{
-          x = 1; y = 0;
+    ll mod_pow(ll x, ll y){
+      ll res = 1;
+        while (y) {
+            if (y & 1) {
+                res = res * x % MOD;
+            }
+            x = x * x % MOD;
+            y >>= 1;
         }
-        return d;
-      }
+      return res;
+    }
 
-      ll mod_inverse(ll a, ll m){
-        ll x, y;
-        extgcd(a, m, x, y);
-        return (m + x % m) % m;
-      }
+    void mod_fact(ll n){
+      fact[0] = 1;
+      REP(i,n)fact[i+1] = fact[i] * (i+1) % MOD;
+    }
 
-      ll mod_fact(ll n, ll p, ll& e){
-        e = 0;
-        if(n==0)return 1;
-        ll res = mod_fact(n/p, p, e);
-        e += n/p;
-        if(n/p%2 != 0) return res * (p - fact[n % p]) % p;
-        return res * fact[n % p] % p;
+    void mod_inv_fact(ll n){
+      inv_fact[n] = mod_pow(fact[n], (MOD-2));
+      REP(i,n){
+        inv_fact[n-1-i] = inv_fact[n-i] * (n-i) % MOD;
       }
+    }
 
-      ll mod_comb(int n, int k, int p){
-        if(n < 0 || k < 0 || n < k)return 0;
-        ll e1, e2, e3;
-        ll a1 = mod_fact(n,p,e1), a2 = mod_fact(k, p, e2), a3 = mod_fact(n-k, p, e3);
-        if(e1 > e2 + e3) return 0;
-        return a1 * mod_inverse(a2 * a3 % p, p) % p;
-      }
+    ll mod_comb(int n, int k){
+      return fact[n] * inv_fact[k] % MOD * inv_fact[n-k] % MOD ;
+    }
+
       '''
   'nck':
     'prefix':'nck'
@@ -178,4 +170,20 @@
         return find(x) == find(y);
       }
 
+      '''
+  'extgcd':
+    'prefix':'extgcd'
+    'body':'''
+      // ax + by = 1; return gcd, change x, y
+
+      ll extgcd(ll a, ll b, ll& x, ll& y){
+        ll d = a;
+        if(b!=0){
+          d = extgcd(b, a%b, y, x);
+          y -= (a / b) * x;
+        }else{
+          x = 1; y = 0;
+        }
+        return d;
+      }
       '''
