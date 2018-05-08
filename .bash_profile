@@ -7,3 +7,5 @@ alias ll='ls -lG'
 alias ls='ls -G'
 alias kaggleup='cd ~/.kaggle/competitions/avito-demand-prediction/src/ && jn'
 alias grep='grep --color'
+export PS1='\[\033[34m\]\W \[\033[0m\]$ '
+
