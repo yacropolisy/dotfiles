@@ -9,4 +9,4 @@ ln -nfs ~/dotfiles/.atom/snippets.cson ~/.atom/snippets.cson
 ln -nfs ~/dotfiles/.atom/styles.less  ~/.atom/styles.less
 ln -nfs ~/dotfiles/.bash_profile  ~/.bash_profile
 ln -nfs ~/dotfiles/.ssh/config ~/.ssh/config
-ln -nfs ~/dotfiles/.tmux_conf ~/.tmux_conf
+ln -nfs ~/dotfiles/.tmux_conf ~/.tmux.conf
