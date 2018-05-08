@@ -218,3 +218,47 @@
         return dp[S][v] = res;
       }
       '''
+
+  'bit_sum':
+    'prefix':'bit_sum'
+    'body':'''
+      // bit_sum O(log n) for a query
+      // 1. set n;
+      // 2. init bit[n+1];
+
+      const int MAX_N = ${1:100000};
+
+      ll bit[MAX_N+1], n;
+
+      ll bit_sum(int i){
+        ll s = 0;
+        while(i > 0){
+          s += bit[i];
+          i -= i & -i;
+        }
+        return s;
+      }
+
+      void bit_add(int i, ll x){
+        while(i <= n){
+          bit[i] += x;
+          i += i & -i;
+        }
+      }
+
+      '''
+
+  'sort_struct':
+    'prefix':'sort_struct'
+    'body':'''
+      // sort struct ascending in first, descending in second
+
+      struct ${1:hako}{
+        ${2:int} ${3:w};
+        ${4:int} ${5:h};
+        bool operator<( const ${1:hako}& right ) const {
+              return ${3:w} == right.${3:w} ? ${5:h} > right.${5:h} : ${3:w} < right.${3:w};
+          }
+      };
+
+      '''
