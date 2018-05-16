@@ -11,3 +11,4 @@ ln -nfs ~/dotfiles/.bash_profile  ~/.bash_profile
 mkdir ~/.ssh
 ln -nfs ~/dotfiles/.ssh/config ~/.ssh/config
 ln -nfs ~/dotfiles/.tmux_conf ~/.tmux.conf
+ln -nfs ~/dotfiles/.gitconfig  ~/.gitconfig

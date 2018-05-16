@@ -1,0 +1,11 @@
+[user]
+  name = Yoshinobu Yamada
+  email = cancer_acropolis@yahoo.co.jp
+[color]
+  ui = auto
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  bra = branch
+  gr = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%
