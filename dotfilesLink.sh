@@ -8,7 +8,9 @@ ln -nfs ~/dotfiles/.atom/keymap.cson  ~/.atom/keymap.cson
 ln -nfs ~/dotfiles/.atom/snippets.cson ~/.atom/snippets.cson
 ln -nfs ~/dotfiles/.atom/styles.less  ~/.atom/styles.less
 ln -nfs ~/dotfiles/.bash_profile  ~/.bash_profile
-mkdir ~/.ssh
+if [ ! -e ~/.ssh ]; then
+	mkdir ~/.ssh
+fi
 ln -nfs ~/dotfiles/.ssh/config ~/.ssh/config
 ln -nfs ~/dotfiles/.tmux_conf ~/.tmux.conf
 ln -nfs ~/dotfiles/.gitconfig  ~/.gitconfig

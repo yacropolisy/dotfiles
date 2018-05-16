@@ -8,4 +8,4 @@
   ci = commit
   st = status
   bra = branch
-  gr = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%
+  gr = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative 
