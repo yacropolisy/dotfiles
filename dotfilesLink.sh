@@ -12,5 +12,5 @@ if [ ! -e ~/.ssh ]; then
 	mkdir ~/.ssh
 fi
 ln -nfs ~/dotfiles/.ssh/config ~/.ssh/config
-ln -nfs ~/dotfiles/.tmux_conf ~/.tmux.conf
+ln -nfs ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -nfs ~/dotfiles/.gitconfig  ~/.gitconfig
