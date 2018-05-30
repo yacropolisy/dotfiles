@@ -6,6 +6,7 @@
       "linter-gcc"
       "markdown-preview"
       "markdown-scroll-sync"
+      "linter-rubocop"
     ]
     telemetryConsent: "no"
   editor:
@@ -38,3 +39,6 @@
     ]
   welcome:
     showOnStartup: false
+  wordcount:
+    alwaysOn: true
+    noextension: true

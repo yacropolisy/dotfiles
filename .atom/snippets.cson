@@ -77,9 +77,9 @@
   'mod_nck':
     'prefix':'mod_nck'
     'body':'''
-    // mod_nck(n, k) → nCk // O(n)
+    // mod_comb(n, k) → nCk // O(n)
     // 1. mod_fact(n); mod_inv_fact(n);
-    // 2. ll ans = mod_nck(n,k);
+    // 2. ll ans = mod_comb(n,k);
 
     const ll MAX_N = ${1:200000};
     ll fact[MAX_N+1], inv_fact[MAX_N+1];
