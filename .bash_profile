@@ -3,6 +3,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 alias jn='jupyter notebook'
 alias ctfup='cd ~/MyVagrant/forCTF_cui32/ && vagrant up && vagrant ssh'
+alias ctfup64='cd ~/MyVagrant/forCTF_cui64/ && vagrant up && vagrant ssh'
 alias ll='ls -lG'
 alias ls='ls -G'
 alias kaggleup='cd ~/.kaggle/competitions/avito-demand-prediction/src/ && jn'
