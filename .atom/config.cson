@@ -15,7 +15,7 @@
     userId: "c54533d7-ee0d-424e-a5f2-0dbc709369c9"
   latex:
     buildOnSave: true
-    engine: "platex"
+    engine: "uplatex"
     openResultAfterBuild: false
     opener: "pdf-view"
     texPath: "/Library/TeX/texbin/tex"
@@ -25,6 +25,7 @@
     gccIncludePaths: "/usr/local/Cellar/gcc/*"
   "linter-ui-default":
     panelHeight: 132
+    showPanel: true
   "markdown-preview-plus":
     markdownItConfig:
       breakOnSingleNewline: true

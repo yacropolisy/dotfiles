@@ -524,3 +524,63 @@
       }
 
       '''
+
+  'moebius':
+    'prefix':'moebius'
+    'body':'''
+      map<int,int> moebius(int n){
+        map<int, int> res;
+        vector<int> primes;
+
+        for(int i = 2; i * i <= n; i++){
+          if(n % i == 0) primes.push_back(i);
+          while(n % i == 0) n /= i;
+        }
+        if(n!=1) primes.push_back(n);
+
+        int m = primes.size();
+        REP(i, 1 << m){
+          int mb = 1;
+          int d = 1;
+          REP(j,m){
+            if(i & 1 << j){
+              mb *= -1;
+              d *= primes[j];
+            }
+          }
+          res[d] = mb;
+        }
+        return res;
+      }
+      '''
+
+  'prime_factor':
+    'prefix':'prime_factor'
+    'body':'''
+      map<int, int> prime_factor(ll n){
+        map<int, int> res;
+        for(int i = 2; i * i <= n; i++){
+          while(n % i == 0){
+            res[i]++;
+            n /= i;
+          }
+        }
+        if(n != 1) res[n] = 1;
+        return res;
+      }
+      '''
+
+  'divisor':
+    'prefix':'divisor'
+    'body':'''
+      vll divisor(ll n){
+        vll res;
+        for(int i = 1; i * i <= n; i++){
+          if(n % i == 0){
+            res.push_back(i);
+            if(i != n / i) res.push_back(n / i);
+          }
+        }
+        return res;
+      }
+      '''
