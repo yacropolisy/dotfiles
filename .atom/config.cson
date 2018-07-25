@@ -13,6 +13,8 @@
     fontSize: 12
   "exception-reporting":
     userId: "c54533d7-ee0d-424e-a5f2-0dbc709369c9"
+  "go-plus":
+    format: {}
   latex:
     buildOnSave: true
     engine: "uplatex"
@@ -25,7 +27,6 @@
     gccIncludePaths: "/usr/local/Cellar/gcc/*"
   "linter-ui-default":
     panelHeight: 132
-    showPanel: true
   "markdown-preview-plus":
     markdownItConfig:
       breakOnSingleNewline: true

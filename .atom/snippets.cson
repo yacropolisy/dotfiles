@@ -584,3 +584,107 @@
         return res;
       }
       '''
+
+  'setsubiji':
+    'prefix':'setsubiji'
+    'body':'''
+      // make setsubiji gyoretsu sa O( n log^2 n)
+      // 1. construct_sa(string s, int sa[] )
+      // 2. use sa
+
+      // make takasa gyoretus lsa O(n)
+      // construct_lcp(string s, int sa[], int lsa[])
+
+      const int MAX_N = 1000000;
+
+      int n, k;
+      int ranker[MAX_N+1];
+      int tmp[MAX_N+1];
+
+      bool compare_sa(int i, int j){
+        if(ranker[i] != ranker[j]) return ranker[i] < ranker[j];
+        else {
+          int ri = i + k <= n ? ranker[i+k] : -1;
+          int rj = j + k <= n ? ranker[j+k] : -1;
+          return ri < rj;
+        }
+      }
+
+      void construct_sa(string S, int *sa){
+        n = S.length();
+
+        REP(i,n+1){
+          sa[i] = i;
+          ranker[i] = i < n ? S[i] : -1;
+        }
+
+        for(k = 1; k <= n; k *= 2){
+          sort(sa, sa + n + 1, compare_sa);
+
+          tmp[sa[0]] = 0;
+          for(int i = 1; i <= n; i++){
+            tmp[sa[i]] = tmp[sa[i-1]] + (compare_sa(sa[i-1], sa[i]) ? 1 : 0);
+          }
+          for(int i = 0; i <= n; i++){
+            ranker[i] = tmp[i];
+          }
+        }
+      }
+
+      void construct_lcp(string S, int *sa, int *lcp){
+        int n = S.length();
+        REP(i,n+1) ranker[sa[i]] = i;
+
+        int h = 0;
+        lcp[0] = 0;
+        REP(i,n){
+          int j = sa[ranker[i] - 1];
+
+          if(h > 0) h--;
+          for(; j + h < n && i + h < n; h++){
+            if(S[j+h] != S[i+h]) break;
+          }
+
+          lcp[ranker[i] - 1] = h;
+        }
+      }
+
+      '''
+
+  'gauss_jordan':
+    'prefix':'gauss_jordan'
+    'body':'''
+      // calc renritsu houteishiki O( n^3)
+      // use EPS for marume gosa
+
+      typedef vector<double> vec;
+      typedef vector<vec> mat;
+
+      vec gauss_jordan(const mat& A, const vec& b){
+        int n = A.size();
+        mat B(n, vec(n+1));
+        REP(i,n) REP(j, n) B[i][j] = A[i][j];
+        REP(i,n) B[i][n] = b[i];
+
+        REP(i,n){
+          int pivot = i;
+          for(int j = i; j < n; j++){
+            if(abs(B[j][i]) > abs(B[pivot][i])) pivot = j;
+          }
+          swap(B[i], B[pivot]);
+
+          if(abs(B[i][i]) < EPS) return vec();
+
+          for(int j = i + 1; j <= n; j++) B[i][j] /= B[i][i];
+          REP(j, n){
+            if(i != j){
+              for(int k = i + 1; k <= n; k++) B[j][k] -= B[j][i] * B[i][k];
+            }
+          }
+        }
+        vec x(n);
+        REP(i,n) x[i] = B[i][n];
+        return x;
+      }
+
+      '''
