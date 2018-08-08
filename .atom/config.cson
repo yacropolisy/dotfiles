@@ -7,6 +7,8 @@
       "markdown-preview"
       "markdown-scroll-sync"
       "linter-rubocop"
+      "atom-beautify"
+      "indent-guide-improved"
     ]
     telemetryConsent: "no"
   editor:
