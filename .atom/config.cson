@@ -19,7 +19,7 @@
     format: {}
   latex:
     buildOnSave: true
-    engine: "uplatex"
+    engine: "platex"
     openResultAfterBuild: false
     opener: "pdf-view"
     texPath: "/Library/TeX/texbin/tex"
@@ -28,7 +28,7 @@
   "linter-gcc":
     gccIncludePaths: "/usr/local/Cellar/gcc/*"
   "linter-ui-default":
-    panelHeight: 132
+    panelHeight: 327
   "markdown-preview-plus":
     markdownItConfig:
       breakOnSingleNewline: true
