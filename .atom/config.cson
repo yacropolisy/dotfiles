@@ -9,6 +9,7 @@
       "linter-rubocop"
       "atom-beautify"
       "indent-guide-improved"
+      "autocomplete-python"
     ]
     telemetryConsent: "no"
   editor:
@@ -28,7 +29,7 @@
   "linter-gcc":
     gccIncludePaths: "/usr/local/Cellar/gcc/*"
   "linter-ui-default":
-    panelHeight: 327
+    panelHeight: 259
   "markdown-preview-plus":
     markdownItConfig:
       breakOnSingleNewline: true

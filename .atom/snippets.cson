@@ -744,7 +744,7 @@
       '''
 
     'segment':
-      'prefix':'hoge'
+      'prefix':'segment'
       'body':'''
         // RMQ segment tree O(n) for init
         // 1. init(n)
